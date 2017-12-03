@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>VueJS - Simple CRUD</title>
+		<script src="../js/libs/vue.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/normalize.css">
+		<link rel="stylesheet" type="text/css" href="../css/skeleton.css">
+		<link rel="stylesheet" href="../css/libs/font-awesome/css/font-awesome.min.css">
+	</head>
+	<body>
+		<div id="app">
+			<div class="container">
+				<h4 style="margin-top: 30px;">Filmes</h4>
+				<table class="u-full-width">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nome</th>
+							<th>Ano</th>
+							<th style="width: 10%;"></th>
+							<th style="width: 10%;"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="filme in filmes">
+							<td>{{ filme.id }}</td>
+							<td>
+								<input v-if="filme.editando" v-model.trim="filme.nome" value="filme.nome" type="text" class="u-full-width">
+								<span v-if="!filme.editando">{{ filme.nome }}</span>
+							</td>
+							<td>
+								<input v-if="filme.editando" v-model.number="filme.ano" value="filme.ano" type="number" class="u-full-width">
+								<span v-if="!filme.editando">{{ filme.ano }}</span>
+							</td>
+							<td v-if="filme.editando">
+								<button v-on:click="confirmarFilme(filme.id)"><i class="fa fa-check"></i></button>
+							</td>
+							<td v-if="!filme.editando">
+								<button v-on:click="editarFilme(filme.id)"><i class="fa fa-pencil"></i></button>
+							</td>
+							<td><button v-on:click="removerFilme(filme.id)"><i class="fa fa-times"></i></button></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="row">
+					<div class="six columns">
+						<button class="button-primary" v-on:click="adicionarFilme()">Adicionar filme</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="../js/app.js"></script>
+	</body>
+</html>
