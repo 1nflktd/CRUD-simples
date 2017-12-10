@@ -44,7 +44,7 @@
 						<tr v-if="adicionandoFilme">
 							<td></td>
 							<td><input v-model.trim="novoFilme.nome" value="novoFilme.nome" type="text" class="u-full-width"></td>
-							<td><input v-model.number="novoFilme.ano" value="novoFilme.ano" type="text" class="u-full-width"></td>
+							<td><input v-model.number="novoFilme.ano" value="novoFilme.ano" type="number" class="u-full-width"></td>
 							<td><button v-on:click="salvarNovoFilme()"><i class="fa fa-check"></i></button></td>
 							<td></td>
 						</tr>

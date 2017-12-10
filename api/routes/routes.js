@@ -18,6 +18,19 @@ var appRouter = function(app) {
 		return res.sendStatus(200);
 	});
 
+	app.put("/filmes/:id", function(req, res) {
+		var id = Number(req.params.id);
+		var filme = req.body;
+		for (i in filmes) {
+			if (filmes[i].id === id) {
+				filmes[i].nome = filme.nome;
+				filmes[i].ano = filme.ano;
+				break;
+			}
+		}
+		return res.sendStatus(200);
+	});
+
 	app.delete("/filmes/:id", function(req, res) {
 		var id = Number(req.params.id);
 		filmes = filmes.filter(function(el) {

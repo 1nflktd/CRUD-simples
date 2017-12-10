@@ -14,7 +14,7 @@ var app = new Vue({
 		this.listarFilmes();
 	},
 	methods: {
-		limparVariaveis() {
+		limparVariaveis: function() {
 			this.novoFilme = {id: 0, nome: "", ano: 0};
 			this.adicionandoFilme = false;
 		},
@@ -59,21 +59,31 @@ var app = new Vue({
 		},
 
 		editarFilme: function(id) {
-			for (i in this.filmes) {
-				if (this.filmes[i].id === id) {
-					this.filmes[i].editando = true;
+			for (i in app.filmes) {
+				if (app.filmes[i].id === id) {
+					app.filmes[i].editando = true;
 					break;
 				}
 			}
 		},
 
 		confirmarFilme: function(id) {
-			for (i in this.filmes) {
-				if (this.filmes[i].id === id) {
-					this.filmes[i].editando = false;
+			var filme = {};
+			for (i in app.filmes) {
+				if (app.filmes[i].id === id) {
+					filme = app.filmes[i];
 					break;
 				}
 			}
+
+			http.put("/filmes/" + id, filme)
+			.then(function(response) {
+				app.listarFilmes();
+			})
+			.catch(function(error) {
+				console.log('erro');
+				console.log(error);
+			});
 		}
 	}
 });
