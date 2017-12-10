@@ -1,4 +1,5 @@
 var appRouter = function(app) {
+	var prox_id = 4;
 	var filmes = [
 		{id: 0, nome: "The Terminator", ano: 1984, editando: false},
 		{id: 1, nome: "The Godfather", ano: 1972, editando: false},
@@ -7,13 +8,22 @@ var appRouter = function(app) {
 	];
 
 	app.get("/filmes", function(req, res) {
-		return res.send(filmes);
+		return res.status(200).send(filmes);
 	});
 
 	app.post("/filmes", function(req, res) {
-		console.log('req');
-		console.log(req);
-		//return res.send(null, 200);
+		req.body.id = prox_id;
+		prox_id++;
+		filmes.push(req.body);
+		return res.sendStatus(200);
+	});
+
+	app.delete("/filmes/:id", function(req, res) {
+		var id = Number(req.params.id);
+		filmes = filmes.filter(function(el) {
+			return el.id !== id;
+		});
+		return res.sendStatus(200);
 	});
 }
 

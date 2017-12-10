@@ -48,8 +48,13 @@ var app = new Vue({
 		},
 
 		removerFilme: function(id) {
-			this.filmes = this.filmes.filter(function(el) {
-				return el.id !== id;
+			http.delete("/filmes/" + id)
+			.then(function(response) {
+				app.listarFilmes();
+			})
+			.catch(function(error) {
+				console.log('erro');
+				console.log(error);
 			});
 		},
 
