@@ -1,25 +1,30 @@
 var http = axios.create({
 	baseURL: "http://localhost:3000",
 	timeout: 1000,
-	//headers: {"Access-Control-Allow-Origin": "http://localhost:8080"},
 });
 
 var app = new Vue({
 	el: '#app',
 	data: {
-		prox_id: 4,
-		filmes: []
+		filmes: [],
+		novoFilme: {id: 0, nome: "", ano: 0},
+		adicionandoFilme: false,
 	},
-	created: function() {
-		console.log('CREATED');
-		this.listarFilmes()
+	mounted: function() {
+		this.listarFilmes();
 	},
 	methods: {
+		limparVariaveis() {
+			this.novoFilme = {id: 0, nome: "", ano: 0};
+			this.adicionandoFilme = false;
+		},
+
 		listarFilmes: function() {
-			console.log('LISTAR FILMES');
+			this.limparVariaveis();
+
 			http.get("/filmes")
 			.then(function(response) {
-				this.filmes = response.data;
+				app.filmes = response.data;
 			})
 			.catch(function(error) {
 				console.log('erro');
@@ -28,8 +33,18 @@ var app = new Vue({
 		},
 
 		adicionarFilme: function() {
-			this.filmes.push({id: this.prox_id, editando: true});
-			this.prox_id++;
+			app.adicionandoFilme = true;
+		},
+
+		salvarNovoFilme: function() {
+			http.post("/filmes", app.novoFilme)
+			.then(function(response) {
+				app.listarFilmes();
+			})
+			.catch(function(error) {
+				console.log('erro');
+				console.log(error);
+			});
 		},
 
 		removerFilme: function(id) {
