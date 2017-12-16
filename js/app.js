@@ -25,14 +25,8 @@ var app = new Vue({
 			http.get("/filmes")
 			.then(function(response) {
 				app.filmes = response.data;
-				for (f in app.filmes) {
-					app.filmes[f]["editando"] = false;
-				}
 			})
-			.catch(function(error) {
-				console.log('erro');
-				console.log(error);
-			});
+			.catch(function(error) {});
 		},
 
 		adicionarFilme: function() {
@@ -44,10 +38,7 @@ var app = new Vue({
 			.then(function(response) {
 				app.listarFilmes();
 			})
-			.catch(function(error) {
-				console.log('erro');
-				console.log(error);
-			});
+			.catch(function(error) {});
 		},
 
 		removerFilme: function(id) {
@@ -55,10 +46,7 @@ var app = new Vue({
 			.then(function(response) {
 				app.listarFilmes();
 			})
-			.catch(function(error) {
-				console.log('erro');
-				console.log(error);
-			});
+			.catch(function(error) {});
 		},
 
 		editarFilme: function(id) {
@@ -83,10 +71,7 @@ var app = new Vue({
 			.then(function(response) {
 				app.listarFilmes();
 			})
-			.catch(function(error) {
-				console.log('erro');
-				console.log(error);
-			});
+			.catch(function(error) {});
 		}
 	}
 });

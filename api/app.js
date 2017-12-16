@@ -13,7 +13,7 @@ app.use(function(req, res, next) {
 	next();
 });
 
-var database = require("./database.js");
+var database = require("./databases/mysql.js");
 var routes = require("./routes/routes.js")(app, database);
 
 var server = app.listen(3000, function () {
