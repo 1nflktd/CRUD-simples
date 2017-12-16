@@ -25,6 +25,9 @@ var app = new Vue({
 			http.get("/filmes")
 			.then(function(response) {
 				app.filmes = response.data;
+				for (f in app.filmes) {
+					app.filmes[f]["editando"] = false;
+				}
 			})
 			.catch(function(error) {
 				console.log('erro');

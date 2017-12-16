@@ -13,7 +13,8 @@ app.use(function(req, res, next) {
 	next();
 });
 
-var routes = require("./routes/routes.js")(app);
+var database = require("./database.js");
+var routes = require("./routes/routes.js")(app, database);
 
 var server = app.listen(3000, function () {
 	console.log("Listening on port %s...", server.address().port);
