@@ -1,13 +1,13 @@
 # CRUD-Simples
 
 - Banco de dados:
-	
+
 	```sql
 	CREATE DATABASE crud_simples;
 	```
 
 - Tabela a ser criada:
-	
+
 	```sql
 	CREATE TABLE `filme` (
 		`id` INT AUTO_INCREMENT,
