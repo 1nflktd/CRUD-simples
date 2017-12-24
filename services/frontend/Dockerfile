@@ -2,10 +2,10 @@
 
 FROM scratch
 
-ADD templates /templates
-ADD css /css
-ADD js /js
-ADD frontend /
+COPY templates /templates
+COPY css /css
+COPY js /js
+COPY frontend /
 
 EXPOSE 8080
 
