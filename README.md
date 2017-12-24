@@ -1,17 +1,21 @@
 # CRUD-Simples
 
 - Banco de dados:
-
+	
+	```sql
 	CREATE DATABASE crud_simples;
+	```
 
 - Tabela a ser criada:
-
+	
+	```sql
 	CREATE TABLE `filme` (
 		`id` INT AUTO_INCREMENT,
 		`nome` VARCHAR(100) NULL,
 		`ano` INT NULL,
 		PRIMARY KEY (`id`)
 	);
+	```
 
 - Service frontend:
 
