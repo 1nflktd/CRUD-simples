@@ -2,20 +2,21 @@
   "name": "crud-nodejs",
   "version": "1.0.0",
   "description": "crud-nodejs",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/1nflktd/VueJS-CRUD-Simples.git"
+    "url": "git+https://github.com/1nflktd/CRUD-Simples.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/1nflktd/VueJS-CRUD-Simples/issues"
+    "url": "https://github.com/1nflktd/CRUD-Simples/issues"
   },
-  "homepage": "https://github.com/1nflktd/VueJS-CRUD-Simples#readme",
+  "homepage": "https://github.com/1nflktd/CRUD-Simples#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
