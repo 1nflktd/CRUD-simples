@@ -2,10 +2,11 @@ var database = function() {
 	var mysql = require("mysql");
 	var pool = mysql.createPool({
 		connectionLimit: 100, //important
-		host: 'localhost',
-		user: 'root',
-		password: '',
-		database: 'crud_simples',
+		host: "127.0.0.1", // localhost, 127.0.0.1
+		port: "3307",
+		user: "root", // docker_user
+		password: "", // 123456
+		database: "crud_simples",
 		debug:  false
 	});
 

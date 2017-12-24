@@ -17,6 +17,12 @@
 	);
 	```
 
+- Para conectar no database dentro do container:
+
+	```
+	mysql -u docker_user -P 3307 -h 127.0.0.1 -p
+	```
+
 - Service frontend:
 
 	- Compilar código go:
