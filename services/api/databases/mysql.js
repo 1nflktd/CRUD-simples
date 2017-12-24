@@ -5,22 +5,22 @@ var database = function() {
 		host: 'localhost',
 		user: 'root',
 		password: '',
-		database: 'vue_js_node_crud',
+		database: 'crud_simples',
 		debug:  false
 	});
 
 	function listarFilmes(callback) {
-		pool.query("SELECT * FROM filmes", function (error, results, fields) {
+		pool.query("SELECT * FROM filme", function (error, results, fields) {
 			callback(error, results);
 		});
 	}
 
 	function inserirFilme(obj) {
-		pool.query("INSERT INTO filmes SET ?", obj, function (error, results, fields) {});
+		pool.query("INSERT INTO filme SET ?", obj, function (error, results, fields) {});
 	}
 
 	function atualizarFilme(obj) {
-		pool.query("UPDATE filmes SET nome = ?, ano = ? WHERE id = ?", [obj.nome, obj.ano, obj.id], function (error, results, fields) {});
+		pool.query("UPDATE filme SET nome = ?, ano = ? WHERE id = ?", [obj.nome, obj.ano, obj.id], function (error, results, fields) {});
 	}
 
 	function salvarFilme(obj) {
@@ -32,7 +32,7 @@ var database = function() {
 	}
 
 	function deletarFilme(id) {
-		pool.query("DELETE FROM filmes WHERE id = ?", [id], function (error, results, fields) {});
+		pool.query("DELETE FROM filme WHERE id = ?", [id], function (error, results, fields) {});
 	}
 
 	return {
