@@ -2,26 +2,31 @@ var database = function() {
 	var mysql = require("mysql");
 	var pool = mysql.createPool({
 		connectionLimit: 100, //important
-		host: "127.0.0.1", // localhost, 127.0.0.1
-		port: "3307",
-		user: "root", // docker_user
-		password: "", // 123456
+		host: "192.168.0.10", // localhost, 127.0.0.1
+		port: "3306", // 3307
+		user: "docker_user", // docker_user, root
+		password: "123456", // 123456, ""
 		database: "crud_simples",
 		debug:  false
 	});
 
 	function listarFilmes(callback) {
 		pool.query("SELECT * FROM filme", function (error, results, fields) {
+			if (error) console.log(error);
 			callback(error, results);
 		});
 	}
 
 	function inserirFilme(obj) {
-		pool.query("INSERT INTO filme SET ?", obj, function (error, results, fields) {});
+		pool.query("INSERT INTO filme SET ?", obj, function (error, results, fields) {
+			if (error) console.log(error);
+		});
 	}
 
 	function atualizarFilme(obj) {
-		pool.query("UPDATE filme SET nome = ?, ano = ? WHERE id = ?", [obj.nome, obj.ano, obj.id], function (error, results, fields) {});
+		pool.query("UPDATE filme SET nome = ?, ano = ? WHERE id = ?", [obj.nome, obj.ano, obj.id], function (error, results, fields) {
+			if (error) console.log(error);
+		});
 	}
 
 	function salvarFilme(obj) {
@@ -33,7 +38,9 @@ var database = function() {
 	}
 
 	function deletarFilme(id) {
-		pool.query("DELETE FROM filme WHERE id = ?", [id], function (error, results, fields) {});
+		pool.query("DELETE FROM filme WHERE id = ?", [id], function (error, results, fields) {
+			if (error) console.log(error);
+		});
 	}
 
 	return {
