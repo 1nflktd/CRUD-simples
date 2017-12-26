@@ -3,6 +3,11 @@ services:
   frontend:
     image: frontend
     deploy:
+      replicas: 3
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
       restart_policy:
         condition: on-failure
     ports:
@@ -17,6 +22,14 @@ services:
       - webnet
   api:
     image: api
+    deploy:
+      replicas: 5
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+      restart_policy:
+        condition: on-failure
     environment:
       - DB_HOST=172.17.0.1
       - DB_PORT=3307
